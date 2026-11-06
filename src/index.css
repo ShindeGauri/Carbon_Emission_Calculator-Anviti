@@ -1,0 +1,94 @@
+/* ==============================================================================
+   Anviti — Sustainability Design System & Global Styles
+   Inspired by climate-tech editorial aesthetics: warm cream, deep forest green,
+   muted sage, and clean accessible typography.
+   ============================================================================== */
+
+:root {
+  /* Core Color Palette */
+  --bg-app: #F9F8F5;            /* Warm off-white / light cream */
+  --bg-surface: #FFFFFF;        /* Crisp card background */
+  --bg-surface-alt: #F3F1EC;    /* Subtle tinted surface */
+  --bg-surface-sage: #EBF1ED;   /* Pale sage highlight */
+  
+  /* Primary & Accents */
+  --color-primary: #1A3A2A;      /* Deep forest green */
+  --color-primary-hover: #12291D;
+  --color-secondary: #4A6E59;    /* Muted sage */
+  --color-secondary-light: #8FA89B;
+  --color-accent-warm: #C8783E;  /* Muted earthy terracotta */
+  --color-accent-ochre: #C09247; /* Warm harvest ochre */
+  
+  /* Category Colors (Restrained, Natural) */
+  --cat-transport: #366B54;      /* Deep evergreen */
+  --cat-electricity: #2D6584;    /* Deep oceanic slate */
+  --cat-food: #A66838;           /* Warm toasted amber */
+  --cat-consumption: #68537A;    /* Muted plum slate */
+
+  /* Neutral Typography */
+  --text-main: #1C2621;          /* Charcoal with hint of green */
+  --text-muted: #56685E;         /* Medium readable slate-green */
+  --text-subtle: #7F9187;        /* Soft caption text */
+  --text-on-dark: #FFFFFF;
+
+  /* Borders & Dividers */
+  --border-light: #E5EBE6;
+  --border-medium: #D3DDD6;
+  --border-focus: #1A3A2A;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(26, 58, 42, 0.05);
+  --shadow-md: 0 4px 12px rgba(26, 58, 42, 0.07);
+  --shadow-lg: 0 10px 24px rgba(26, 58, 42, 0.09);
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  /* Typography Scale */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+}
+
+/* Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  background: none;
+  transition: all 0.15s ease-in-out;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+/* Accessible focus ring */
+button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
