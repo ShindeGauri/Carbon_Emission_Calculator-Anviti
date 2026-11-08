@@ -1,0 +1,698 @@
+/* =========================================
+   ANVITI — GREEN CHALLENGES
+   Enhanced Gamified Sustainability Experience
+   ========================================= */
+
+.gc-section {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    color: #263b31;
+    width: 100%;
+}
+
+.gc-panel {
+    padding: 28px;
+    background: linear-gradient(145deg, #ffffff 0%, #f8fcf8 100%);
+    border: 1px solid #dceade;
+    border-radius: 23px;
+    box-shadow: 0 8px 30px rgba(35, 65, 48, 0.065);
+}
+
+/* =========================================
+   HEADING
+   ========================================= */
+
+.gc-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.gc-eyebrow,
+.gc-section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #37804e;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.gc-heading h2 {
+    margin: 9px 0 6px;
+    font-size: 29px;
+    font-weight: 850;
+    color: #203d2b;
+    letter-spacing: -0.8px;
+}
+
+.gc-heading p,
+.gc-panel-heading p {
+    margin: 0;
+    color: #718177;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* =========================================
+   GREEN PROGRESS SUMMARY
+   ========================================= */
+
+.gc-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 17px;
+    margin-top: 27px;
+}
+
+.gc-stat-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+    min-height: 120px;
+    padding: 21px 17px;
+    border: 1px solid transparent;
+    border-radius: 19px;
+    box-shadow: 0 6px 18px rgba(35, 70, 48, 0.055);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    overflow: hidden;
+}
+
+.gc-stat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 13px 27px rgba(35, 70, 48, 0.12);
+}
+
+.gc-stat-card::after {
+    content: '';
+    position: absolute;
+    width: 95px;
+    height: 95px;
+    right: -30px;
+    bottom: -40px;
+    border-radius: 50%;
+    opacity: 0.65;
+    pointer-events: none;
+}
+
+.gc-stat-icon {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 17px;
+    position: relative;
+    z-index: 1;
+}
+
+.gc-stat-card>div:last-child {
+    min-width: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.gc-stat-card p {
+    margin: 0 0 6px;
+    color: #64756a;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.gc-stat-card h3 {
+    margin: 0;
+    color: #203c2c;
+    font-size: 29px;
+    font-weight: 850;
+    line-height: 1.15;
+}
+
+.gc-stat-card span {
+    display: block;
+    margin-top: 6px;
+    color: #829087;
+    font-size: 11px;
+}
+
+/* Points */
+
+.points-card {
+    background: linear-gradient(135deg, #dff5e4, #f5fcf6);
+    border-color: #c6e8cd;
+}
+
+.points-icon {
+    background: #c6ebce;
+    color: #267a43;
+}
+
+/* Streak */
+
+.streak-card {
+    background: linear-gradient(135deg, #fff0df, #fff9f1);
+    border-color: #f4ddc4;
+}
+
+.streak-icon {
+    background: #ffe2c2;
+    color: #df842b;
+}
+
+.streak-card::after {
+    background: #ffdfbd;
+}
+
+/* Weekly */
+
+.weekly-card {
+    background: linear-gradient(135deg, #e2f1ff, #f5faff);
+    border-color: #cfe4f8;
+}
+
+.weekly-icon {
+    background: #d0e8ff;
+    color: #337bb7;
+}
+
+.weekly-card::after {
+    background: #cfe5ff;
+}
+
+/* Achievements */
+
+.achievement-card {
+    background: linear-gradient(135deg, #f1e8ff, #fbf8ff);
+    border-color: #e4d5fa;
+}
+
+.achievement-icon {
+    background: #e6d6ff;
+    color: #8755bd;
+}
+
+.achievement-card::after {
+    background: #e5d5ff;
+}
+
+/* =========================================
+   MAIN CHALLENGE PANEL
+   ========================================= */
+
+.gc-panel-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.gc-panel-heading h3 {
+    margin: 8px 0 6px;
+    color: #284b35;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.gc-progress-pill {
+    padding: 9px 15px;
+    border-radius: 30px;
+    color: #347849;
+    background: #e4f4e7;
+    border: 1px solid #cce7d1;
+    font-size: 11px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+/* =========================================
+   PROGRESS BAR
+   ========================================= */
+
+.gc-progress-track {
+    width: 100%;
+    height: 11px;
+    margin: 20px 0;
+    overflow: hidden;
+    border-radius: 30px;
+    background: #e9f0ea;
+}
+
+.gc-progress-fill {
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #32804b, #63b979, #94d99f);
+    box-shadow: 0 2px 8px rgba(65, 151, 83, 0.25);
+    transition: width 0.6s ease;
+}
+
+/* =========================================
+   CATEGORY TABS
+   ========================================= */
+
+.gc-tabs {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    flex-wrap: wrap;
+    margin: 24px 0;
+    padding: 8px;
+    background: #edf5ee;
+    border: 1px solid #dceade;
+    border-radius: 16px;
+}
+
+.gc-tabs button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 17px;
+    border: 1px solid transparent;
+    border-radius: 11px;
+    background: transparent;
+    color: #687b6e;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 750;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.gc-tabs button:hover {
+    color: #286c3e;
+    background: #dcefe0;
+    transform: translateY(-1px);
+}
+
+.gc-tabs button.active {
+    color: #ffffff;
+    background: linear-gradient(135deg, #287344, #55a467);
+    border-color: #438b55;
+    box-shadow: 0 5px 14px rgba(45, 112, 62, 0.24);
+}
+
+/* =========================================
+   CHALLENGE GRID
+   ========================================= */
+
+.gc-challenge-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.gc-challenge-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 23px;
+    border: 1px solid #e0ebe2;
+    border-radius: 19px;
+    background: linear-gradient(150deg, #ffffff 0%, #f7fbf7 100%);
+    box-shadow: 0 5px 17px rgba(35, 65, 48, 0.045);
+    transition: transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.gc-challenge-card:hover {
+    border-color: #9bc9a5;
+    transform: translateY(-5px);
+    box-shadow: 0 13px 28px rgba(35, 85, 48, 0.10);
+}
+
+/* Selected challenge from recommendations */
+
+.gc-challenge-card.gc-highlighted-challenge {
+    border: 2px solid #319253 !important;
+    box-shadow: 0 0 0 5px rgba(49, 146, 83, 0.13),
+        0 12px 28px rgba(35, 85, 48, 0.12) !important;
+    animation: gc-highlight-pulse 1.2s ease-in-out 2;
+}
+
+@keyframes gc-highlight-pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 4px rgba(49, 146, 83, 0.12),
+            0 12px 28px rgba(35, 85, 48, 0.10);
+    }
+
+    50% {
+        box-shadow: 0 0 0 9px rgba(49, 146, 83, 0.20),
+            0 12px 28px rgba(35, 85, 48, 0.14);
+    }
+}
+
+.gc-challenge-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.gc-category {
+    color: #64806b;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.9px;
+}
+
+.gc-points {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 11px;
+    border-radius: 20px;
+    color: #347849;
+    background: #e4f4e7;
+    border: 1px solid #d0ead5;
+    font-size: 11px;
+    font-weight: 850;
+}
+
+.gc-challenge-card h4 {
+    margin: 16px 0 8px;
+    color: #294b35;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: -0.2px;
+}
+
+.gc-challenge-card>p {
+    min-height: 42px;
+    margin: 0 0 17px;
+    color: #748278;
+    font-size: 12px;
+    line-height: 1.75;
+}
+
+/* =========================================
+   CHALLENGE BUTTONS
+   ========================================= */
+
+.gc-complete-btn,
+.gc-diwali-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    max-width: 100%;
+    padding: 12px 17px;
+    border: 1px solid #438354;
+    border-radius: 11px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #39804d, #5ba36b);
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.22s ease;
+}
+
+.gc-complete-btn:hover:not(:disabled),
+.gc-diwali-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #286b3c, #438a53);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(55, 105, 68, 0.20);
+}
+
+.gc-complete-btn.completed,
+.gc-diwali-btn.completed {
+    color: #39754a;
+    background: #e8f5eb;
+    border-color: #cce5d1;
+    cursor: default;
+}
+
+.gc-complete-btn:disabled,
+.gc-diwali-btn:disabled {
+    opacity: 1;
+}
+
+/* =========================================
+   PROOF UPLOAD AREA
+   ========================================= */
+
+.gc-challenge-card input[type="file"] {
+    width: 100%;
+    margin: 12px 0;
+    padding: 12px;
+    border: 1px dashed #91bc9a;
+    border-radius: 12px;
+    color: #61756a;
+    background: #f1f8f2;
+    font-family: inherit;
+    font-size: 11px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.gc-challenge-card input[type="file"]:hover {
+    border-color: #438354;
+    background: #e8f5ea;
+}
+
+.gc-challenge-card input[type="file"]::file-selector-button {
+    margin-right: 10px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    background: #4d8b5d;
+    font-size: 10px;
+    font-weight: 750;
+    cursor: pointer;
+}
+
+/* =========================================
+   STATUS MESSAGES
+   ========================================= */
+
+.gc-challenge-card [class*="pending"],
+.gc-challenge-card [class*="rejected"] {
+    border-radius: 10px;
+}
+
+/* =========================================
+   ACHIEVEMENTS
+   ========================================= */
+
+.gc-badges-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 17px;
+    margin-top: 23px;
+}
+
+.gc-badge-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 15px;
+    text-align: center;
+    border: 1px solid #e4ebe5;
+    border-radius: 19px;
+    background: linear-gradient(145deg, #ffffff, #f6faf6);
+    box-shadow: 0 5px 15px rgba(35, 65, 48, 0.045);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gc-badge-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(35, 65, 48, 0.09);
+}
+
+.gc-badge-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 58px;
+    margin-bottom: 15px;
+    border-radius: 19px;
+    color: #a5afa8;
+    background: #edf0ed;
+}
+
+.gc-badge-card strong {
+    color: #637168;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.gc-badge-card p {
+    min-height: 32px;
+    margin: 8px 0 12px;
+    color: #89958d;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.gc-badge-card>span {
+    color: #929b94;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+/* Unlocked achievement */
+
+.gc-badge-card.unlocked {
+    border-color: #b9dfc1;
+    background: linear-gradient(145deg, #e8f7eb, #ffffff);
+    box-shadow: 0 6px 18px rgba(65, 135, 77, 0.08);
+}
+
+.gc-badge-card.unlocked .gc-badge-icon {
+    color: #328049;
+    background: #d3efd9;
+    box-shadow: 0 4px 12px rgba(65, 135, 77, 0.10);
+}
+
+.gc-badge-card.unlocked strong,
+.gc-badge-card.unlocked>span {
+    color: #347849;
+}
+
+/* =========================================
+   DISCLAIMER
+   ========================================= */
+
+.gc-disclaimer {
+    margin: 0;
+    padding: 12px 14px;
+    color: #78877d;
+    background: #f3f8f3;
+    border: 1px solid #e3ece4;
+    border-radius: 11px;
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+/* =========================================
+   INTERACTION AND ACCESSIBILITY
+   ========================================= */
+
+.gc-section button:focus-visible,
+.gc-section input:focus-visible {
+    outline: 3px solid rgba(79, 128, 94, 0.35);
+    outline-offset: 3px;
+}
+
+.gc-section button:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+
+@media (max-width: 1100px) {
+    .gc-stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gc-badges-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .gc-panel {
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    .gc-heading h2 {
+        font-size: 24px;
+    }
+
+    .gc-challenge-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gc-tabs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gc-tabs button {
+        width: 100%;
+        padding: 11px 7px;
+        font-size: 11px;
+    }
+
+    .gc-panel-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .gc-section {
+        gap: 17px;
+    }
+
+    .gc-panel {
+        padding: 16px;
+    }
+
+    .gc-heading h2 {
+        font-size: 22px;
+    }
+
+    .gc-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .gc-stat-card {
+        min-height: 105px;
+        padding: 17px;
+    }
+
+    .gc-challenge-card {
+        padding: 18px;
+    }
+
+    .gc-badges-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 11px;
+    }
+
+    .gc-badge-card {
+        padding: 19px 10px;
+    }
+
+    .gc-badge-icon {
+        width: 49px;
+        height: 49px;
+    }
+}
+
+/* =========================================
+   REDUCED MOTION ACCESSIBILITY
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .gc-section *,
+    .gc-section *::before,
+    .gc-section *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
