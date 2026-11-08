@@ -194,10 +194,7 @@
     padding: 23px 27px;
     border: 1px solid #cfe8d2;
     border-radius: 19px;
-    background: linear-gradient(115deg,
-            #e7f7e9 0%,
-            #f5fbf3 55%,
-            #edf8e9 100%);
+    background: linear-gradient(115deg, #e7f7e9 0%, #f5fbf3 55%, #edf8e9 100%);
 }
 
 .gc-plant-visual {
@@ -423,10 +420,7 @@
     overflow: hidden;
     border: 1px solid #f0d5ad;
     border-radius: 17px;
-    background: linear-gradient(120deg,
-            #fff5e6 0%,
-            #fffaf1 55%,
-            #fdf0dd 100%);
+    background: linear-gradient(120deg, #fff5e6 0%, #fffaf1 55%, #fdf0dd 100%);
 }
 
 .gc-diwali-banner::after {
@@ -527,10 +521,7 @@
     border-radius: 19px;
     background: linear-gradient(150deg, #ffffff 0%, #f7fbf7 100%);
     box-shadow: 0 5px 17px rgba(35, 65, 48, 0.045);
-    transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .gc-challenge-card:hover {
@@ -541,9 +532,7 @@
 
 .gc-challenge-card.gc-highlighted-challenge {
     border: 2px solid #319253;
-    box-shadow:
-        0 0 0 5px rgba(49, 146, 83, 0.13),
-        0 12px 28px rgba(35, 85, 48, 0.12);
+    box-shadow: 0 0 0 5px rgba(49, 146, 83, 0.13), 0 12px 28px rgba(35, 85, 48, 0.12);
     animation: gc-highlight-pulse 1.2s ease-in-out 2;
 }
 
@@ -551,15 +540,11 @@
 
     0%,
     100% {
-        box-shadow:
-            0 0 0 4px rgba(49, 146, 83, 0.12),
-            0 12px 28px rgba(35, 85, 48, 0.10);
+        box-shadow: 0 0 0 4px rgba(49, 146, 83, 0.12), 0 12px 28px rgba(35, 85, 48, 0.10);
     }
 
     50% {
-        box-shadow:
-            0 0 0 9px rgba(49, 146, 83, 0.20),
-            0 12px 28px rgba(35, 85, 48, 0.14);
+        box-shadow: 0 0 0 9px rgba(49, 146, 83, 0.20), 0 12px 28px rgba(35, 85, 48, 0.14);
     }
 }
 
@@ -594,8 +579,6 @@
     box-shadow: inset 0 0 15px rgba(91, 155, 91, 0.08);
 }
 
-/* Illustration themes */
-
 .gc-illustration-recycling {
     background: linear-gradient(145deg, #e5f6e6, #f5fbef);
 }
@@ -628,7 +611,21 @@
     background: linear-gradient(145deg, #fff0d9, #fff8ed);
 }
 
-/* Illustration emoji and animations */
+.gc-illustration-diya {
+    background: linear-gradient(145deg, #fff0d9, #fff8ed);
+}
+
+.gc-illustration-celebration {
+    background: linear-gradient(145deg, #fff0d9, #fff8ed);
+}
+
+.gc-illustration-mobility {
+    background: linear-gradient(145deg, #e1edff, #f4f8ff);
+}
+
+.gc-illustration-transport {
+    background: linear-gradient(145deg, #e1edff, #f4f8ff);
+}
 
 .gc-challenge-emoji {
     display: block;
@@ -1042,10 +1039,776 @@
     line-height: 1.7;
 }
 
+/* =========================================================
+   STAGE 4 — CHALLENGE CELEBRATIONS
+   ========================================================= */
+
+.gc-celebration-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow: hidden;
+    background: rgba(20, 43, 29, 0.58);
+    backdrop-filter: blur(6px);
+    animation: gc-overlay-appear 0.3s ease both;
+}
+
+@keyframes gc-overlay-appear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.gc-confetti-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.gc-confetti-piece {
+    position: absolute;
+    top: -20px;
+    width: 9px;
+    height: 15px;
+    border-radius: 3px;
+    background: var(--confetti-color, #54a96a);
+    animation: gc-confetti-fall 3s ease-in forwards;
+}
+
+.gc-confetti-piece:nth-child(3n) {
+    background: var(--confetti-color, #f2c66d);
+}
+
+.gc-confetti-piece:nth-child(3n + 1) {
+    background: var(--confetti-color, #83c9a0);
+}
+
+.gc-confetti-piece:nth-child(3n + 2) {
+    background: var(--confetti-color, #b5df87);
+}
+
+@keyframes gc-confetti-fall {
+    0% {
+        opacity: 1;
+        transform: translate3d(0, -10px, 0) rotate(0deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate3d(var(--confetti-x), 105vh, 0) rotate(720deg);
+    }
+}
+
+.gc-celebration-modal {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 440px);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 36px 30px 30px;
+    border: 1px solid #d5ead8;
+    border-radius: 25px;
+    background: linear-gradient(145deg, #ffffff, #f2faf3);
+    box-shadow: 0 25px 80px rgba(12, 42, 23, 0.25);
+    text-align: center;
+    animation: gc-celebration-pop 0.55s cubic-bezier(.2, 1.4, .4, 1) both;
+}
+
+@keyframes gc-celebration-pop {
+    0% {
+        opacity: 0;
+        transform: scale(0.65) translateY(25px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.gc-celebration-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    color: #688071;
+    background: #eaf3eb;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.gc-celebration-close:hover {
+    background: #d8ebdc;
+    transform: rotate(90deg);
+}
+
+.gc-celebration-icon {
+    display: grid;
+    place-items: center;
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 18px;
+    border-radius: 26px;
+    background: linear-gradient(145deg, #d9f2df, #edf9e9);
+    font-size: 51px;
+    animation: gc-reward-bounce 1.2s ease-in-out infinite;
+}
+
+@keyframes gc-reward-bounce {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateY(-7px) rotate(3deg);
+    }
+}
+
+.gc-celebration-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #438451;
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: 1.3px;
+}
+
+.gc-celebration-modal h2 {
+    margin: 12px 0 9px;
+    color: #28563a;
+    font-size: 25px;
+    font-weight: 850;
+    letter-spacing: -0.5px;
+}
+
+.gc-celebration-description {
+    margin: 0 auto;
+    max-width: 330px;
+    color: #718176;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.gc-celebration-description strong {
+    color: #347849;
+}
+
+.gc-celebration-points {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 22px 0 15px;
+    padding: 15px;
+    border: 1px solid #cce8d1;
+    border-radius: 14px;
+    color: #287343;
+    background: #e7f6e9;
+    font-size: 20px;
+    font-weight: 850;
+    animation: gc-points-reward 0.65s ease both;
+}
+
+@keyframes gc-points-reward {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    70% {
+        transform: scale(1.06);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.gc-plant-unlock-message {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 14px;
+    margin-top: 14px;
+    border: 1px solid #d4e9c9;
+    border-radius: 14px;
+    background: #f1f8e9;
+    text-align: left;
+}
+
+.gc-plant-unlock-emoji {
+    flex-shrink: 0;
+    font-size: 36px;
+    animation: gc-plant-unlock 1s ease both;
+}
+
+@keyframes gc-plant-unlock {
+    0% {
+        transform: scale(0.4) rotate(-20deg);
+    }
+
+    70% {
+        transform: scale(1.2) rotate(10deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(0);
+    }
+}
+
+.gc-plant-unlock-message strong {
+    color: #347849;
+    font-size: 13px;
+}
+
+.gc-plant-unlock-message p {
+    margin: 4px 0 0;
+    color: #74866e;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.gc-celebration-footer {
+    margin: 17px 0;
+    color: #849087;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.gc-celebration-total {
+    margin: 0;
+    color: #55735a;
+    font-size: 12px;
+    font-weight: 750;
+}
+
+.gc-celebration-done {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 13px 18px;
+    border: 1px solid #438354;
+    border-radius: 11px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #39804d, #5ba36b);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gc-celebration-done:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 16px rgba(55, 105, 68, 0.2);
+}
+
+/* GREEN POINTS CARD ANIMATION */
+
+.gc-points-celebrating .gc-stat-icon {
+    animation: gc-points-icon-pulse 0.8s ease;
+}
+
+.gc-points-celebrating h3 {
+    animation: gc-points-number-pop 0.7s ease;
+}
+
+.gc-points-number {
+    display: inline-block;
+    transform-origin: center;
+}
+
+.gc-points-pop {
+    animation: gc-points-number-pop 0.7s ease both;
+}
+
+@keyframes gc-points-icon-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2) rotate(-8deg);
+    }
+}
+
+@keyframes gc-points-number-pop {
+    0% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.25);
+        color: #278343;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* PLANT STAGE CELEBRATION */
+
+.gc-plant-stage-celebration .gc-plant-emoji {
+    animation: gc-plant-unlock 1s ease both;
+}
+
+.gc-plant-stage-celebration .gc-plant-glow {
+    animation: gc-plant-glow-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes gc-plant-glow-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.65;
+    }
+
+    50% {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+}
+
+/* =========================================================
+   STAGE 5 — ACHIEVEMENT UNLOCK ANIMATIONS
+   ========================================================= */
+
+.gc-badge-card {
+    overflow: hidden;
+}
+
+.gc-badge-card.gc-badge-newly-unlocked {
+    border: 2px solid #65b879;
+    animation: gc-badge-unlock 1s cubic-bezier(.2, 1.4, .4, 1) both;
+    box-shadow: 0 0 0 5px rgba(91, 173, 108, 0.12), 0 12px 30px rgba(55, 130, 73, 0.18);
+}
+
+@keyframes gc-badge-unlock {
+    0% {
+        opacity: 0.6;
+        transform: scale(0.75) rotate(-5deg);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.08) rotate(2deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(0);
+    }
+}
+
+.gc-badge-card.gc-badge-newly-unlocked .gc-badge-icon {
+    animation: gc-badge-icon-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes gc-badge-icon-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px rgba(75, 153, 91, 0.15);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 0 23px rgba(75, 153, 91, 0.4);
+        transform: scale(1.12);
+    }
+}
+
+.gc-badge-sparkle {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    color: #ffffff;
+    background: #e6ad39;
+    font-size: 14px;
+    box-shadow: 0 3px 9px rgba(173, 126, 35, 0.25);
+    animation: gc-badge-sparkle 1.5s ease-in-out infinite;
+}
+
+.gc-badge-icon {
+    position: relative;
+}
+
+@keyframes gc-badge-sparkle {
+
+    0%,
+    100% {
+        transform: scale(0.8) rotate(0);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.2) rotate(25deg);
+        opacity: 1;
+    }
+}
+
+/* SPECIAL GREEN DIWALI BADGE */
+
+.gc-badge-card.gc-badge-festive {
+    border-color: #e9c98d;
+    background: linear-gradient(145deg, #fff6df, #fffdf6);
+}
+
+.gc-badge-card.gc-badge-festive .gc-badge-icon {
+    color: #b47b2c;
+    background: #f9e8c2;
+}
+
+.gc-badge-card.gc-badge-festive strong,
+.gc-badge-card.gc-badge-festive>span {
+    color: #946322;
+}
+
+.gc-badge-card.gc-badge-festive.gc-badge-newly-unlocked {
+    border-color: #d9a94e;
+    box-shadow: 0 0 0 5px rgba(225, 178, 87, 0.15), 0 12px 30px rgba(173, 126, 35, 0.18);
+}
+
+/* ACHIEVEMENT POPUP OVERLAY */
+
+.gc-achievement-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow: hidden;
+    background: rgba(25, 45, 31, 0.65);
+    backdrop-filter: blur(7px);
+    animation: gc-achievement-overlay-in 0.3s ease both;
+}
+
+@keyframes gc-achievement-overlay-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.gc-achievement-confetti {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.gc-achievement-confetti-piece {
+    position: absolute;
+    top: -20px;
+    width: 9px;
+    height: 15px;
+    border-radius: 3px;
+    background: var(--achievement-confetti-color);
+    animation: gc-achievement-confetti-fall 3.5s ease-in forwards;
+}
+
+.gc-achievement-confetti-piece:nth-child(even) {
+    width: 7px;
+    height: 11px;
+    border-radius: 50%;
+}
+
+@keyframes gc-achievement-confetti-fall {
+    0% {
+        opacity: 1;
+        transform: translateY(-10px) rotate(0deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(110vh) rotate(720deg);
+    }
+}
+
+/* ACHIEVEMENT MODAL */
+
+.gc-achievement-modal {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 430px);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 37px 30px 29px;
+    border: 1px solid #d2e9d5;
+    border-radius: 25px;
+    background: linear-gradient(145deg, #ffffff, #f0f9f1);
+    box-shadow: 0 25px 80px rgba(12, 42, 23, 0.3);
+    text-align: center;
+    animation: gc-achievement-modal-pop 0.65s cubic-bezier(.2, 1.4, .4, 1) both;
+}
+
+@keyframes gc-achievement-modal-pop {
+    0% {
+        opacity: 0;
+        transform: scale(0.55) translateY(35px);
+    }
+
+    70% {
+        opacity: 1;
+        transform: scale(1.04) translateY(-3px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* FESTIVE POPUP */
+
+.gc-achievement-modal-festive {
+    border-color: #e9cf9b;
+    background: linear-gradient(145deg, #fffdf6, #fff4dc);
+}
+
+.gc-achievement-modal-festive .gc-achievement-trophy {
+    background: linear-gradient(145deg, #ffe6a8, #f8c86d);
+    box-shadow: 0 8px 25px rgba(197, 143, 48, 0.2);
+}
+
+.gc-achievement-modal-festive .gc-achievement-eyebrow {
+    color: #a66e27;
+}
+
+.gc-achievement-modal-festive h2 {
+    color: #80521e;
+}
+
+/* ACHIEVEMENT CLOSE BUTTON */
+
+.gc-achievement-close {
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    color: #687c6c;
+    background: #e9f2e9;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.gc-achievement-close:hover {
+    background: #d7ead9;
+    transform: rotate(90deg);
+}
+
+/* DECORATIVE RAYS */
+
+.gc-achievement-rays {
+    position: absolute;
+    top: 48px;
+    left: 50%;
+    color: #e5bd63;
+    font-size: 125px;
+    line-height: 1;
+    opacity: 0.16;
+    pointer-events: none;
+    transform: translateX(-50%);
+    animation: gc-achievement-rays-spin 18s linear infinite;
+}
+
+@keyframes gc-achievement-rays-spin {
+    from {
+        transform: translateX(-50%) rotate(0deg);
+    }
+
+    to {
+        transform: translateX(-50%) rotate(360deg);
+    }
+}
+
+/* ACHIEVEMENT TROPHY */
+
+.gc-achievement-trophy {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 105px;
+    height: 105px;
+    margin: 0 auto 19px;
+    border: 5px solid rgba(255, 255, 255, 0.8);
+    border-radius: 31px;
+    color: #9c762d;
+    background: linear-gradient(145deg, #e5f5d9, #c9e9c7);
+    box-shadow: 0 8px 25px rgba(64, 133, 75, 0.17);
+    font-size: 59px;
+    animation: gc-achievement-trophy-bounce 1.5s ease-in-out infinite;
+}
+
+@keyframes gc-achievement-trophy-bounce {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-4deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(4deg);
+    }
+}
+
+/* ACHIEVEMENT POPUP TEXT */
+
+.gc-achievement-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    color: #438451;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.4px;
+}
+
+.gc-achievement-modal h2 {
+    margin: 13px 0 9px;
+    color: #28563a;
+    font-size: 25px;
+    font-weight: 850;
+    letter-spacing: -0.5px;
+}
+
+.gc-achievement-description {
+    max-width: 320px;
+    margin: 0 auto;
+    color: #748277;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* FESTIVE MESSAGE */
+
+.gc-achievement-special-message {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    padding: 14px;
+    border: 1px solid #f0d9aa;
+    border-radius: 13px;
+    background: rgba(255, 248, 226, 0.9);
+    text-align: left;
+}
+
+.gc-achievement-special-message>span {
+    flex-shrink: 0;
+    font-size: 32px;
+    animation: gc-diya-glow 1.5s ease-in-out infinite;
+}
+
+.gc-achievement-special-message p {
+    margin: 0;
+    color: #8b683c;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+@keyframes gc-diya-glow {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 2px rgba(222, 156, 52, 0.2));
+        transform: scale(1);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 9px rgba(222, 156, 52, 0.65));
+        transform: scale(1.12);
+    }
+}
+
+/* UNLOCKED CONFIRMATION */
+
+.gc-achievement-unlocked-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 23px 0 19px;
+    padding: 13px;
+    border: 1px solid #cde7d1;
+    border-radius: 12px;
+    color: #347849;
+    background: #e8f6e9;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+/* CONTINUE BUTTON */
+
+.gc-achievement-continue {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 13px 18px;
+    border: 1px solid #438354;
+    border-radius: 11px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #39804d, #5ba36b);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gc-achievement-continue:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 16px rgba(55, 105, 68, 0.2);
+}
+
 /* INTERACTION AND ACCESSIBILITY */
 
 .gc-section button:focus-visible,
-.gc-section input:focus-visible {
+.gc-section input:focus-visible,
+.gc-celebration-overlay button:focus-visible,
+.gc-achievement-overlay button:focus-visible {
     outline: 3px solid rgba(79, 128, 94, 0.35);
     outline-offset: 3px;
 }
@@ -1199,6 +1962,49 @@
     .gc-challenge-emoji {
         font-size: 37px;
     }
+
+    .gc-celebration-modal {
+        padding: 32px 20px 23px;
+        border-radius: 20px;
+    }
+
+    .gc-celebration-modal h2 {
+        font-size: 22px;
+    }
+
+    .gc-celebration-icon {
+        width: 76px;
+        height: 76px;
+        font-size: 43px;
+    }
+
+    .gc-celebration-points {
+        font-size: 18px;
+    }
+
+    .gc-celebration-total {
+        font-size: 11px;
+    }
+
+    .gc-achievement-modal {
+        padding: 34px 20px 23px;
+        border-radius: 20px;
+    }
+
+    .gc-achievement-modal h2 {
+        font-size: 22px;
+    }
+
+    .gc-achievement-trophy {
+        width: 88px;
+        height: 88px;
+        border-radius: 25px;
+        font-size: 49px;
+    }
+
+    .gc-achievement-rays {
+        font-size: 105px;
+    }
 }
 
 /* REDUCED MOTION ACCESSIBILITY */
@@ -1207,7 +2013,13 @@
 
     .gc-section *,
     .gc-section *::before,
-    .gc-section *::after {
+    .gc-section *::after,
+    .gc-celebration-overlay *,
+    .gc-celebration-overlay *::before,
+    .gc-celebration-overlay *::after,
+    .gc-achievement-overlay *,
+    .gc-achievement-overlay *::before,
+    .gc-achievement-overlay *::after {
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
@@ -1218,5 +2030,14 @@
     .gc-challenge-emoji {
         animation: none !important;
         transition: none !important;
+    }
+
+    .gc-plant-stage-celebration .gc-plant-glow {
+        animation: none !important;
+    }
+
+    .gc-badge-card.gc-badge-newly-unlocked,
+    .gc-badge-card.gc-badge-newly-unlocked .gc-badge-icon {
+        animation: none !important;
     }
 }

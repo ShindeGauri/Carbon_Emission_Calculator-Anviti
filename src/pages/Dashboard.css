@@ -2,6 +2,7 @@
    ANVITI — CARBON DASHBOARD
    Modern, Human-Centered Sustainability Dashboard
    Includes Leaf Buddy Welcome Experience
+   Stage 6 — Dashboard Visual Polish
    ========================================================= */
 
 .dash-root {
@@ -11,6 +12,7 @@
   gap: 25px;
   color: #263b31;
   padding-bottom: 30px;
+  animation: dash-stage6-entrance 0.55s ease both;
 }
 
 /* =========================================================
@@ -47,6 +49,10 @@
   font-weight: 850;
   letter-spacing: -1.1px;
   line-height: 1.2;
+  background: linear-gradient(100deg, #203d2b, #438653);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .dash-subtitle {
@@ -150,7 +156,9 @@
   background:
     radial-gradient(circle at 12% 45%, rgba(157, 213, 157, 0.2), transparent 25%),
     linear-gradient(115deg, #edf8ed 0%, #f8fcf6 55%, #f0f8ef 100%);
-  box-shadow: 0 7px 22px rgba(45, 105, 61, 0.055);
+  box-shadow:
+    0 8px 24px rgba(45, 105, 61, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
   animation: leaf-buddy-entrance 0.65s ease both;
 }
 
@@ -189,6 +197,13 @@
     inset -7px -8px 0 rgba(48, 127, 65, 0.12),
     0 9px 18px rgba(54, 128, 66, 0.17);
   animation: leaf-buddy-float 3s ease-in-out infinite;
+  transition: box-shadow 0.3s ease;
+}
+
+.leaf-buddy-welcome:hover .leaf-buddy-character {
+  box-shadow:
+    inset -7px -8px 0 rgba(48, 127, 65, 0.12),
+    0 12px 25px rgba(54, 128, 66, 0.22);
 }
 
 .leaf-buddy-leaf {
@@ -329,6 +344,12 @@
   font-size: 10px;
   font-weight: 650;
   line-height: 1.6;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.leaf-buddy-tip:hover {
+  background: #ffffff;
+  border-color: #b9d9b8;
 }
 
 .leaf-buddy-tip>span:first-child {
@@ -416,11 +437,16 @@
   position: relative;
   min-width: 0;
   padding: 23px;
+  overflow: hidden;
+  isolation: isolate;
   border: 1px solid #e3ebe4;
   border-radius: 19px;
   background: #ffffff;
   box-shadow: 0 6px 20px rgba(35, 65, 48, 0.045);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
 }
 
 .kpi-card:hover {
@@ -441,6 +467,49 @@
 .kpi-card.target {
   background: linear-gradient(145deg, #eaf4ff, #ffffff);
   border-color: #d3e4f5;
+}
+
+/* Decorative KPI illustrations */
+
+.kpi-card::after {
+  position: absolute;
+  right: 15px;
+  bottom: 8px;
+  z-index: -1;
+  font-size: 76px;
+  line-height: 1;
+  opacity: 0.10;
+  pointer-events: none;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.kpi-card.total::after {
+  content: "🌍";
+}
+
+.kpi-card.hotspot::after {
+  content: "🌱";
+}
+
+.kpi-card.target::after {
+  content: "🎯";
+}
+
+.kpi-card:hover::after {
+  opacity: 0.17;
+  transform: rotate(-9deg) scale(1.12);
+}
+
+.kpi-card.total:hover {
+  border-color: #a9d8b1;
+}
+
+.kpi-card.hotspot:hover {
+  border-color: #e8c69e;
+}
+
+.kpi-card.target:hover {
+  border-color: #b4d3ed;
 }
 
 .kpi-header {
@@ -489,6 +558,7 @@
   letter-spacing: -1.8px;
   line-height: 1.1;
   overflow-wrap: anywhere;
+  text-shadow: 0 3px 12px rgba(36, 107, 60, 0.08);
 }
 
 .kpi-subtext {
@@ -739,7 +809,12 @@
   border: 1px solid #e3ebe4;
   border-radius: 20px;
   background: #ffffff;
-  box-shadow: 0 6px 20px rgba(35, 65, 48, 0.045);
+  box-shadow: 0 5px 18px rgba(35, 65, 48, 0.045);
+  transition: box-shadow 0.25s ease;
+}
+
+.visual-card:hover {
+  box-shadow: 0 10px 25px rgba(35, 65, 48, 0.075);
 }
 
 .visual-card h3 {
@@ -782,10 +857,14 @@
   height: auto;
   overflow: visible;
   transform: rotate(0deg);
+  filter: drop-shadow(0 5px 8px rgba(38, 75, 48, 0.08));
 }
 
 .svg-donut circle {
-  transition: stroke-dasharray 0.6s ease;
+  transition:
+    stroke-dasharray 0.6s ease,
+    stroke-width 0.25s ease,
+    opacity 0.25s ease;
 }
 
 .donut-center-label {
@@ -806,6 +885,7 @@
   font-weight: 900;
   letter-spacing: -0.8px;
   text-overflow: ellipsis;
+  transition: transform 0.25s ease;
 }
 
 .donut-center-unit {
@@ -829,16 +909,20 @@
   align-items: center;
   gap: 8px;
   padding: 7px 8px;
+  border: 1px solid transparent;
   border-radius: 9px;
-  transition: background 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .legend-row:hover {
   background: #f3f8f3;
+  border-color: #e0ece2;
+  transform: translateX(3px);
 }
 
 .legend-row.is-hotspot {
   background: #eef7ef;
+  border-color: #d7ead9;
 }
 
 .legend-row-left,
@@ -925,8 +1009,11 @@
 }
 
 .category-item-card {
+  position: relative;
   min-width: 0;
   padding: 15px;
+  overflow: hidden;
+  isolation: isolate;
   border: 1px solid #e6ede7;
   border-radius: 14px;
   background: #fbfdfb;
@@ -941,6 +1028,41 @@
 .category-item-card.hotspot-border {
   border-color: #9fcda8;
   background: linear-gradient(145deg, #eff8f0, #ffffff);
+}
+
+/* Decorative category illustrations */
+
+.category-item-card::after {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: -1;
+  font-size: 42px;
+  line-height: 1;
+  opacity: 0.075;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.category-item-card:nth-child(1)::after {
+  content: "🚗";
+}
+
+.category-item-card:nth-child(2)::after {
+  content: "⚡";
+}
+
+.category-item-card:nth-child(3)::after {
+  content: "🥗";
+}
+
+.category-item-card:nth-child(4)::after {
+  content: "🛍️";
+}
+
+.category-item-card:hover::after {
+  opacity: 0.15;
+  transform: translateY(-5px) rotate(-8deg);
 }
 
 .item-top {
@@ -958,6 +1080,12 @@
   display: grid;
   place-items: center;
   border-radius: 11px;
+  transition: transform 0.25s ease, border-radius 0.25s ease;
+}
+
+.category-item-card:hover .item-icon-box {
+  transform: scale(1.09) rotate(-4deg);
+  border-radius: 13px;
 }
 
 .item-top>div:nth-child(2) {
@@ -1019,6 +1147,7 @@
 }
 
 .item-bar-track {
+  position: relative;
   height: 7px;
   width: 100%;
   margin-top: 12px;
@@ -1028,9 +1157,32 @@
 }
 
 .item-bar-fill {
+  position: relative;
   height: 100%;
   border-radius: inherit;
+  overflow: hidden;
   transition: width 0.6s ease;
+}
+
+.item-bar-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.35) 50%,
+      transparent 80%);
+  transform: translateX(-100%);
+}
+
+.category-item-card:hover .item-bar-fill::after {
+  animation: dash-bar-shimmer 1s ease;
+}
+
+@keyframes dash-bar-shimmer {
+  to {
+    transform: translateX(100%);
+  }
 }
 
 /* =========================================================
@@ -1038,11 +1190,24 @@
    ========================================================= */
 
 .dash-recommendations-teaser {
+  position: relative;
   padding: 24px;
+  overflow: hidden;
   border: 1px solid #d9e9dc;
   border-radius: 20px;
   background: linear-gradient(130deg, #edf8ef, #ffffff);
   box-shadow: 0 6px 20px rgba(35, 65, 48, 0.045);
+}
+
+.dash-recommendations-teaser::after {
+  content: "🌿";
+  position: absolute;
+  top: -14px;
+  right: 22px;
+  font-size: 76px;
+  opacity: 0.08;
+  pointer-events: none;
+  transform: rotate(-20deg);
 }
 
 .teaser-header {
@@ -1105,11 +1270,29 @@
 }
 
 .teaser-rec-card {
+  position: relative;
   padding: 17px;
+  overflow: hidden;
   border: 1px solid #e0ebe1;
   border-radius: 14px;
   background: #ffffff;
   transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.teaser-rec-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 0;
+  border-radius: 0 0 5px 5px;
+  background: #63a773;
+  transition: height 0.3s ease;
+}
+
+.teaser-rec-card:hover::before {
+  height: 100%;
 }
 
 .teaser-rec-card:hover {
@@ -1166,6 +1349,10 @@
   outline-offset: 3px;
 }
 
+.dash-header-actions button:active {
+  transform: scale(0.97);
+}
+
 /* =========================================================
    RESPONSIVE DESIGN
    ========================================================= */
@@ -1210,7 +1397,6 @@
     justify-content: flex-start;
   }
 
-  /* Leaf Buddy mobile layout */
   .leaf-buddy-welcome {
     gap: 12px;
     padding: 20px 38px 20px 14px;
@@ -1228,6 +1414,21 @@
 
   .leaf-buddy-message>p {
     font-size: 10px;
+  }
+
+  .kpi-card::after {
+    font-size: 58px;
+    right: 10px;
+    bottom: 5px;
+  }
+
+  .category-item-card::after {
+    font-size: 34px;
+  }
+
+  .dash-recommendations-teaser::after {
+    font-size: 55px;
+    right: 12px;
   }
 }
 
@@ -1317,5 +1518,21 @@
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+}
+
+/* =========================================================
+   STAGE 6 — EXTRA ANIMATION
+   ========================================================= */
+
+@keyframes dash-stage6-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
