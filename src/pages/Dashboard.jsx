@@ -1,3 +1,4 @@
+
 /* ==============================================================================
    Anviti — Carbon Dashboard
    A human-centered sustainability dashboard making carbon data intuitive,
@@ -63,6 +64,7 @@ const WEEKLY_BENCHMARK_TARGET = 80;
 export default function Dashboard({
   result,
   isDemo = false,
+  user = null,
   onNavigateToCalculator,
   onNavigateToSimulator,
   onNavigateToRecommendations,
@@ -70,7 +72,9 @@ export default function Dashboard({
   selectedChallengeId,
 }) {
   const [showCo2Explanation, setShowCo2Explanation] = useState(false);
-  const [showBenchmarkExplanation, setShowBenchmarkExplanation] = useState(false);
+  const [showBenchmarkExplanation, setShowBenchmarkExplanation] =
+    useState(false);
+  const [showLeafBuddy, setShowLeafBuddy] = useState(true);
 
   const { breakdown = {}, total = 0, meta = {} } = result || {};
 
@@ -196,6 +200,68 @@ export default function Dashboard({
             own actual habits!
           </span>
         </div>
+      )}
+
+      {/* Leaf Buddy Welcome */}
+      {showLeafBuddy && (
+        <section className="leaf-buddy-welcome">
+          <div className="leaf-buddy-character-area">
+            <div className="leaf-buddy-glow"></div>
+
+            <div
+              className="leaf-buddy-character"
+              role="img"
+              aria-label="Leaf Buddy, your sustainability companion"
+            >
+              <span className="leaf-buddy-leaf">🌿</span>
+              <span className="leaf-buddy-eye left"></span>
+              <span className="leaf-buddy-eye right"></span>
+              <span className="leaf-buddy-smile"></span>
+              <span className="leaf-buddy-cheek left"></span>
+              <span className="leaf-buddy-cheek right"></span>
+            </div>
+
+            <div className="leaf-buddy-ground-shadow"></div>
+
+            <span className="leaf-buddy-sparkle sparkle-one">✦</span>
+            <span className="leaf-buddy-sparkle sparkle-two">✧</span>
+            <span className="leaf-buddy-sparkle sparkle-three">✦</span>
+          </div>
+
+          <div className="leaf-buddy-message">
+            <div className="leaf-buddy-eyebrow">
+              <Sparkles size={13} />
+              YOUR LITTLE GREEN COMPANION
+            </div>
+
+            <h3>Hey there! I'm Leaf Buddy 🌱</h3>
+
+            <p>
+              Every small step towards a greener lifestyle matters. I'm here
+              to help you understand your carbon footprint and discover simple
+              ways to make a positive difference.
+            </p>
+
+            <div className="leaf-buddy-tip">
+              <span>💡</span>
+              <span>
+                {hotspot
+                  ? `Your biggest opportunity right now is ${getCategoryConfig(hotspot.key).label}. Explore your recommendations to find ways to reduce it!`
+                  : 'Start by exploring your weekly footprint and try a green challenge today!'}
+              </span>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            className="leaf-buddy-dismiss"
+            onClick={() => setShowLeafBuddy(false)}
+            aria-label="Dismiss Leaf Buddy welcome message"
+            title="Dismiss welcome message"
+          >
+            ×
+          </button>
+        </section>
       )}
 
       {/* Core Metric Cards */}
@@ -444,8 +510,8 @@ export default function Dashboard({
                         fill="transparent"
                         stroke={getCategoryConfig(key).color}
                         strokeWidth="20"
-                        strokeDasharray={`${strokeDash} ${circumference - strokeDash
-                          }`}
+                        strokeDasharray={`${strokeDash
+                          } ${circumference - strokeDash}`}
                         strokeDashoffset={dashOffset}
                         transform="rotate(-90 80 80)"
                       />
@@ -638,7 +704,11 @@ export default function Dashboard({
       )}
 
       {/* Green Challenges, Points and Achievements */}
-      <GreenChallenges selectedChallengeId={selectedChallengeId} />
+      <GreenChallenges
+        selectedChallengeId={selectedChallengeId}
+        isDemo={Boolean(isDemo && !user)}
+        user={user}
+      />
 
     </div>
   );

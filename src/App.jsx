@@ -369,6 +369,8 @@ export default function App() {
 
                 isDemo={isDemoMode}
 
+                user={user}
+
                 selectedChallengeId={selectedChallengeId}
 
                 onNavigateToCalculator={() =>

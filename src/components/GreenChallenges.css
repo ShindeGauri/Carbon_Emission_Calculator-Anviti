@@ -20,48 +20,36 @@
     box-shadow: 0 8px 30px rgba(35, 65, 48, 0.065);
 }
 
-/* =========================================
-   HEADING
-   ========================================= */
+/* MAIN HEADING */
 
-.gc-heading {
+.gc-main-heading {
+    margin-bottom: 22px;
+}
+
+.gc-title-row {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
+    margin-bottom: 6px;
+    color: #366b54;
 }
 
-.gc-eyebrow,
-.gc-section-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    color: #37804e;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-}
-
-.gc-heading h2 {
-    margin: 9px 0 6px;
-    font-size: 29px;
-    font-weight: 850;
+.gc-title-row h2 {
+    margin: 0;
     color: #203d2b;
-    letter-spacing: -0.8px;
+    font-size: 25px;
+    font-weight: 850;
+    letter-spacing: -0.5px;
 }
 
-.gc-heading p,
-.gc-panel-heading p {
+.gc-main-heading>p {
     margin: 0;
     color: #718177;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.7;
 }
 
-/* =========================================
-   GREEN PROGRESS SUMMARY
-   ========================================= */
+/* GREEN PROGRESS SUMMARY */
 
 .gc-stats-grid {
     display: grid;
@@ -142,8 +130,6 @@
     font-size: 11px;
 }
 
-/* Points */
-
 .points-card {
     background: linear-gradient(135deg, #dff5e4, #f5fcf6);
     border-color: #c6e8cd;
@@ -153,8 +139,6 @@
     background: #c6ebce;
     color: #267a43;
 }
-
-/* Streak */
 
 .streak-card {
     background: linear-gradient(135deg, #fff0df, #fff9f1);
@@ -170,8 +154,6 @@
     background: #ffdfbd;
 }
 
-/* Weekly */
-
 .weekly-card {
     background: linear-gradient(135deg, #e2f1ff, #f5faff);
     border-color: #cfe4f8;
@@ -185,8 +167,6 @@
 .weekly-card::after {
     background: #cfe5ff;
 }
-
-/* Achievements */
 
 .achievement-card {
     background: linear-gradient(135deg, #f1e8ff, #fbf8ff);
@@ -202,60 +182,163 @@
     background: #e5d5ff;
 }
 
-/* =========================================
-   MAIN CHALLENGE PANEL
-   ========================================= */
+/* GROWING GREEN PLANT */
 
-.gc-panel-heading {
+.gc-plant-growth {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+    padding: 23px 27px;
+    border: 1px solid #cfe8d2;
+    border-radius: 19px;
+    background: linear-gradient(115deg,
+            #e7f7e9 0%,
+            #f5fbf3 55%,
+            #edf8e9 100%);
+}
+
+.gc-plant-visual {
+    position: relative;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 125px;
+    height: 115px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.55);
+}
+
+.gc-plant-glow {
+    position: absolute;
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    background: rgba(113, 183, 111, 0.16);
+    filter: blur(9px);
+}
+
+.gc-plant-emoji {
+    position: relative;
+    z-index: 1;
+    display: block;
+    font-size: 65px;
+    line-height: 1;
+    animation: gc-plant-grow 1s ease both;
+    transform-origin: bottom center;
+}
+
+.gc-plant-stage-0 {
+    font-size: 55px;
+}
+
+.gc-plant-stage-1 {
+    font-size: 61px;
+}
+
+.gc-plant-stage-2 {
+    font-size: 69px;
+}
+
+.gc-plant-stage-3 {
+    font-size: 76px;
+}
+
+.gc-plant-ground {
+    position: absolute;
+    bottom: 15px;
+    width: 65px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(105, 139, 83, 0.17);
+}
+
+@keyframes gc-plant-grow {
+    0% {
+        opacity: 0;
+        transform: scale(0.65) translateY(9px);
+    }
+
+    70% {
+        transform: scale(1.08) translateY(-2px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.gc-plant-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.gc-plant-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 7px;
+    color: #448453;
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: 1px;
+}
+
+.gc-plant-details h3 {
+    margin: 0 0 5px;
+    color: #28563a;
+    font-size: 21px;
+    font-weight: 850;
+}
+
+.gc-plant-details>p {
+    margin: 0 0 16px;
+    color: #6b806e;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.gc-plant-progress-heading {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 14px;
-    flex-wrap: wrap;
-}
-
-.gc-panel-heading h3 {
-    margin: 8px 0 6px;
-    color: #284b35;
-    font-size: 21px;
-    font-weight: 800;
-}
-
-.gc-progress-pill {
-    padding: 9px 15px;
-    border-radius: 30px;
-    color: #347849;
-    background: #e4f4e7;
-    border: 1px solid #cce7d1;
+    gap: 10px;
+    margin-bottom: 7px;
+    color: #55735a;
     font-size: 11px;
-    font-weight: 800;
+}
+
+.gc-plant-progress-heading strong {
+    color: #347849;
     white-space: nowrap;
 }
 
-/* =========================================
-   PROGRESS BAR
-   ========================================= */
-
-.gc-progress-track {
+.gc-plant-progress-track {
     width: 100%;
-    height: 11px;
-    margin: 20px 0;
+    height: 9px;
     overflow: hidden;
-    border-radius: 30px;
-    background: #e9f0ea;
+    border-radius: 20px;
+    background: #d6e9d6;
 }
 
-.gc-progress-fill {
+.gc-plant-progress-fill {
     height: 100%;
     border-radius: inherit;
-    background: linear-gradient(90deg, #32804b, #63b979, #94d99f);
-    box-shadow: 0 2px 8px rgba(65, 151, 83, 0.25);
-    transition: width 0.6s ease;
+    background: linear-gradient(90deg, #65aa65, #32804b);
+    transition: width 0.7s ease;
 }
 
-/* =========================================
-   CATEGORY TABS
-   ========================================= */
+.gc-plant-next-stage {
+    display: block;
+    margin-top: 8px;
+    color: #718574;
+    font-size: 10px;
+}
+
+/* CATEGORY TABS */
 
 .gc-tabs {
     display: flex;
@@ -283,6 +366,7 @@
     font-size: 12px;
     font-weight: 750;
     cursor: pointer;
+    white-space: nowrap;
     transition: all 0.25s ease;
 }
 
@@ -299,9 +383,133 @@
     box-shadow: 0 5px 14px rgba(45, 112, 62, 0.24);
 }
 
-/* =========================================
-   CHALLENGE GRID
-   ========================================= */
+/* USER NOTICE */
+
+.gc-notice {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 13px 15px;
+    margin: 10px 0 16px;
+    border: 1px solid #d4e9d8;
+    border-radius: 10px;
+    background: #edf5ef;
+    color: #28533f;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.gc-notice button {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    padding: 2px;
+    border: none;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* GREEN DIWALI BANNER */
+
+.gc-diwali-banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 23px;
+    margin: 17px 0 25px;
+    overflow: hidden;
+    border: 1px solid #f0d5ad;
+    border-radius: 17px;
+    background: linear-gradient(120deg,
+            #fff5e6 0%,
+            #fffaf1 55%,
+            #fdf0dd 100%);
+}
+
+.gc-diwali-banner::after {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    right: -35px;
+    bottom: -85px;
+    border-radius: 50%;
+    background: rgba(229, 159, 70, 0.12);
+}
+
+.gc-diwali-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 53px;
+    height: 53px;
+    border-radius: 16px;
+    color: #a96b27;
+    background: #f9e3c2;
+}
+
+.gc-diwali-eyebrow {
+    display: block;
+    margin-bottom: 5px;
+    color: #a66b2c;
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.gc-diwali-banner h3 {
+    margin: 0 0 6px;
+    color: #75451f;
+    font-size: 20px;
+    font-weight: 850;
+}
+
+.gc-diwali-banner p {
+    margin: 0;
+    color: #8b6848;
+    font-size: 12px;
+    line-height: 1.65;
+}
+
+.gc-diwali-reward {
+    display: block;
+    margin-top: 9px;
+    color: #9a6125;
+    font-size: 11px;
+    font-weight: 750;
+}
+
+/* CATEGORY HEADING */
+
+.gc-category-section {
+    margin-top: 15px;
+}
+
+.gc-category-heading {
+    margin-bottom: 17px;
+}
+
+.gc-category-heading h3,
+.gc-achievements-section h3 {
+    margin: 0 0 5px;
+    color: #284b35;
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.gc-category-heading p,
+.gc-achievements-intro {
+    margin: 0;
+    color: #647b6c;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* CHALLENGE GRID */
 
 .gc-challenge-grid {
     display: grid;
@@ -319,7 +527,8 @@
     border-radius: 19px;
     background: linear-gradient(150deg, #ffffff 0%, #f7fbf7 100%);
     box-shadow: 0 5px 17px rgba(35, 65, 48, 0.045);
-    transition: transform 0.25s ease,
+    transition:
+        transform 0.25s ease,
         border-color 0.25s ease,
         box-shadow 0.25s ease;
 }
@@ -330,12 +539,11 @@
     box-shadow: 0 13px 28px rgba(35, 85, 48, 0.10);
 }
 
-/* Selected challenge from recommendations */
-
 .gc-challenge-card.gc-highlighted-challenge {
-    border: 2px solid #319253 !important;
-    box-shadow: 0 0 0 5px rgba(49, 146, 83, 0.13),
-        0 12px 28px rgba(35, 85, 48, 0.12) !important;
+    border: 2px solid #319253;
+    box-shadow:
+        0 0 0 5px rgba(49, 146, 83, 0.13),
+        0 12px 28px rgba(35, 85, 48, 0.12);
     animation: gc-highlight-pulse 1.2s ease-in-out 2;
 }
 
@@ -343,17 +551,21 @@
 
     0%,
     100% {
-        box-shadow: 0 0 0 4px rgba(49, 146, 83, 0.12),
+        box-shadow:
+            0 0 0 4px rgba(49, 146, 83, 0.12),
             0 12px 28px rgba(35, 85, 48, 0.10);
     }
 
     50% {
-        box-shadow: 0 0 0 9px rgba(49, 146, 83, 0.20),
+        box-shadow:
+            0 0 0 9px rgba(49, 146, 83, 0.20),
             0 12px 28px rgba(35, 85, 48, 0.14);
     }
 }
 
-.gc-challenge-top {
+/* CHALLENGE TOP AND ICON */
+
+.gc-challenge-card-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -361,15 +573,100 @@
     flex-wrap: wrap;
 }
 
-.gc-category {
-    color: #64806b;
-    font-size: 10px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.9px;
+.gc-challenge-icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: #edf5ef;
+    color: #366b54;
 }
 
-.gc-points {
+/* CHALLENGE ILLUSTRATIONS */
+
+.gc-challenge-icon.gc-has-illustration {
+    width: 78px;
+    height: 78px;
+    min-width: 78px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: inset 0 0 15px rgba(91, 155, 91, 0.08);
+}
+
+/* Illustration themes */
+
+.gc-illustration-recycling {
+    background: linear-gradient(145deg, #e5f6e6, #f5fbef);
+}
+
+.gc-illustration-water {
+    background: linear-gradient(145deg, #dff3ff, #f1faff);
+}
+
+.gc-illustration-planting {
+    background: linear-gradient(145deg, #e6f5d9, #f5fae9);
+}
+
+.gc-illustration-shopping {
+    background: linear-gradient(145deg, #fff0dc, #fff9ed);
+}
+
+.gc-illustration-energy {
+    background: linear-gradient(145deg, #fff4cf, #fffbed);
+}
+
+.gc-illustration-commute {
+    background: linear-gradient(145deg, #e1edff, #f4f8ff);
+}
+
+.gc-illustration-food {
+    background: linear-gradient(145deg, #fff0df, #fff9ef);
+}
+
+.gc-illustration-festive {
+    background: linear-gradient(145deg, #fff0d9, #fff8ed);
+}
+
+/* Illustration emoji and animations */
+
+.gc-challenge-emoji {
+    display: block;
+    font-size: 43px;
+    line-height: 1;
+    transform-origin: center;
+    animation: gc-illustration-float 3s ease-in-out infinite;
+}
+
+.gc-challenge-card:hover .gc-challenge-emoji {
+    animation: gc-illustration-bounce 0.55s ease;
+}
+
+@keyframes gc-illustration-float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes gc-illustration-bounce {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-7px) scale(1.12);
+    }
+}
+
+.gc-challenge-points {
     display: inline-flex;
     align-items: center;
     padding: 7px 11px;
@@ -381,28 +678,65 @@
     font-weight: 850;
 }
 
-.gc-challenge-card h4 {
-    margin: 16px 0 8px;
+/* CHALLENGE CONTENT */
+
+.gc-challenge-content {
+    margin-top: 15px;
+}
+
+.gc-challenge-content h4 {
+    margin: 0 0 8px;
     color: #294b35;
     font-size: 17px;
     font-weight: 800;
     letter-spacing: -0.2px;
 }
 
-.gc-challenge-card>p {
+.gc-challenge-content p {
     min-height: 42px;
-    margin: 0 0 17px;
+    margin: 0 0 15px;
     color: #748278;
     font-size: 12px;
     line-height: 1.75;
 }
 
-/* =========================================
-   CHALLENGE BUTTONS
-   ========================================= */
+/* CHALLENGE METADATA */
 
-.gc-complete-btn,
-.gc-diwali-btn {
+.gc-challenge-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+    color: #647b6c;
+    font-size: 11px;
+}
+
+.gc-status-completed,
+.gc-status-pending,
+.gc-status-rejected {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 750;
+}
+
+.gc-status-completed {
+    color: #25834d;
+}
+
+.gc-status-pending {
+    color: #b7791f;
+}
+
+.gc-status-rejected {
+    color: #c24141;
+}
+
+/* CHALLENGE BUTTONS */
+
+.gc-complete-btn {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -421,33 +755,50 @@
     transition: all 0.22s ease;
 }
 
-.gc-complete-btn:hover:not(:disabled),
-.gc-diwali-btn:hover:not(:disabled) {
+.gc-complete-btn:hover:not(:disabled) {
     background: linear-gradient(135deg, #286b3c, #438a53);
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(55, 105, 68, 0.20);
 }
 
-.gc-complete-btn.completed,
-.gc-diwali-btn.completed {
-    color: #39754a;
-    background: #e8f5eb;
-    border-color: #cce5d1;
-    cursor: default;
+.gc-complete-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
 }
 
-.gc-complete-btn:disabled,
-.gc-diwali-btn:disabled {
-    opacity: 1;
+.gc-completed-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    padding: 11px;
+    border-radius: 9px;
+    color: #286344;
+    background: #edf5ef;
+    font-size: 12px;
+    font-weight: 750;
 }
 
-/* =========================================
-   PROOF UPLOAD AREA
-   ========================================= */
+/* PROOF UPLOAD AREA */
+
+.gc-proof-area {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.gc-proof-label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #334f3c;
+    font-size: 12px;
+    font-weight: 750;
+}
 
 .gc-challenge-card input[type="file"] {
     width: 100%;
-    margin: 12px 0;
+    margin: 3px 0;
     padding: 12px;
     border: 1px dashed #91bc9a;
     border-radius: 12px;
@@ -476,18 +827,124 @@
     cursor: pointer;
 }
 
-/* =========================================
-   STATUS MESSAGES
-   ========================================= */
-
-.gc-challenge-card [class*="pending"],
-.gc-challenge-card [class*="rejected"] {
-    border-radius: 10px;
+.gc-selected-file {
+    color: #366b54;
+    font-size: 11px;
+    overflow-wrap: anywhere;
 }
 
-/* =========================================
-   ACHIEVEMENTS
-   ========================================= */
+.gc-rejected-help {
+    margin: 0;
+    color: #c24141;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.gc-submit-btn {
+    width: 100%;
+}
+
+/* PENDING VERIFICATION */
+
+.gc-pending-area {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.gc-pending-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    padding: 12px;
+    border-radius: 9px;
+    background: #fff7e6;
+    color: #946200;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.gc-demo-review {
+    padding: 13px;
+    border: 1px dashed #d5c18e;
+    border-radius: 11px;
+    background: #fffaf0;
+}
+
+.gc-demo-review>p {
+    margin: 0 0 10px;
+    color: #86632b;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.gc-demo-review-buttons {
+    display: flex;
+    gap: 9px;
+}
+
+.gc-approve-btn,
+.gc-reject-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gc-approve-btn {
+    color: #ffffff;
+    background: #32804b;
+    border-color: #287344;
+}
+
+.gc-approve-btn:hover {
+    background: #246b3b;
+    box-shadow: 0 4px 12px rgba(40, 115, 68, 0.2);
+    transform: translateY(-1px);
+}
+
+.gc-reject-btn {
+    color: #a33d3d;
+    background: #fff0f0;
+    border-color: #f0caca;
+}
+
+.gc-reject-btn:hover {
+    background: #ffe3e3;
+    box-shadow: 0 4px 12px rgba(163, 61, 61, 0.12);
+    transform: translateY(-1px);
+}
+
+.gc-demo-note {
+    margin-top: 20px;
+    padding: 13px 15px;
+    border: 1px solid #eadbb9;
+    border-radius: 10px;
+    background: #fff9ed;
+    color: #85642f;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+/* ACHIEVEMENTS */
+
+.gc-achievements-section {
+    margin-top: 20px;
+}
+
+.gc-achievements-intro {
+    margin-bottom: 18px;
+}
 
 .gc-badges-grid {
     display: grid;
@@ -547,7 +1004,12 @@
     font-weight: 800;
 }
 
-/* Unlocked achievement */
+.gc-badge-status-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #a0aaa2;
+}
 
 .gc-badge-card.unlocked {
     border-color: #b9dfc1;
@@ -562,28 +1024,25 @@
 }
 
 .gc-badge-card.unlocked strong,
-.gc-badge-card.unlocked>span {
+.gc-badge-card.unlocked>span,
+.gc-badge-card.unlocked .gc-badge-status-icon {
     color: #347849;
 }
 
-/* =========================================
-   DISCLAIMER
-   ========================================= */
+/* DISCLAIMER */
 
 .gc-disclaimer {
-    margin: 0;
-    padding: 12px 14px;
+    margin: 22px 0 0;
+    padding: 13px 15px;
     color: #78877d;
     background: #f3f8f3;
     border: 1px solid #e3ece4;
     border-radius: 11px;
-    font-size: 10px;
+    font-size: 11px;
     line-height: 1.7;
 }
 
-/* =========================================
-   INTERACTION AND ACCESSIBILITY
-   ========================================= */
+/* INTERACTION AND ACCESSIBILITY */
 
 .gc-section button:focus-visible,
 .gc-section input:focus-visible {
@@ -595,9 +1054,7 @@
     transform: scale(0.98);
 }
 
-/* =========================================
-   RESPONSIVE DESIGN
-   ========================================= */
+/* RESPONSIVE DESIGN */
 
 @media (max-width: 1100px) {
     .gc-stats-grid {
@@ -615,8 +1072,8 @@
         border-radius: 18px;
     }
 
-    .gc-heading h2 {
-        font-size: 24px;
+    .gc-title-row h2 {
+        font-size: 23px;
     }
 
     .gc-challenge-grid {
@@ -634,9 +1091,23 @@
         font-size: 11px;
     }
 
-    .gc-panel-heading {
+    .gc-diwali-banner {
         align-items: flex-start;
-        flex-direction: column;
+        padding: 18px;
+    }
+
+    .gc-plant-growth {
+        gap: 15px;
+        padding: 18px;
+    }
+
+    .gc-plant-visual {
+        width: 95px;
+        height: 105px;
+    }
+
+    .gc-plant-details h3 {
+        font-size: 18px;
     }
 }
 
@@ -649,8 +1120,8 @@
         padding: 16px;
     }
 
-    .gc-heading h2 {
-        font-size: 22px;
+    .gc-title-row h2 {
+        font-size: 21px;
     }
 
     .gc-stats-grid {
@@ -680,11 +1151,57 @@
         width: 49px;
         height: 49px;
     }
+
+    .gc-diwali-banner {
+        gap: 12px;
+        padding: 15px;
+    }
+
+    .gc-diwali-icon {
+        width: 43px;
+        height: 43px;
+    }
+
+    .gc-diwali-banner h3 {
+        font-size: 17px;
+    }
+
+    .gc-demo-review-buttons {
+        flex-direction: column;
+    }
+
+    .gc-plant-growth {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 13px;
+        padding: 17px;
+    }
+
+    .gc-plant-visual {
+        width: 100%;
+        height: 95px;
+    }
+
+    .gc-plant-details {
+        width: 100%;
+    }
+
+    .gc-plant-progress-heading {
+        flex-wrap: wrap;
+    }
+
+    .gc-challenge-icon.gc-has-illustration {
+        width: 68px;
+        height: 68px;
+        min-width: 68px;
+    }
+
+    .gc-challenge-emoji {
+        font-size: 37px;
+    }
 }
 
-/* =========================================
-   REDUCED MOTION ACCESSIBILITY
-   ========================================= */
+/* REDUCED MOTION ACCESSIBILITY */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -694,5 +1211,12 @@
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
+    }
+
+    .gc-plant-emoji,
+    .gc-plant-progress-fill,
+    .gc-challenge-emoji {
+        animation: none !important;
+        transition: none !important;
     }
 }
