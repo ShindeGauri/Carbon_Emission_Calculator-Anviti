@@ -31,15 +31,41 @@ export async function getCurrentSession() {
   }
 }
 
-export async function signUpWithEmail(email, password) {
+export async function signUpWithEmail(fullName, email, password) {
   if (!isSupabaseConfigured() || !supabase) {
     throw new Error('Supabase is not configured. Add credentials in .env to enable real accounts.');
   }
+
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
+    options: {
+      data: {
+        full_name: fullName.trim()
+      }
+    }
   });
+
   if (error) throw error;
+
+  // Save the profile immediately when Supabase returns an active session.
+  if (data.user && data.session) {
+    const { error: profileError } = await supabase
+      .from('profiles')
+      .upsert(
+        {
+          id: data.user.id,
+          email: data.user.email,
+          full_name: fullName.trim()
+        },
+        { onConflict: 'id' }
+      );
+
+    if (profileError) {
+      console.error('Profile save failed:', profileError);
+    }
+  }
+
   return data;
 }
 

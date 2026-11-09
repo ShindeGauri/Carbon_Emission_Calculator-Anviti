@@ -1,0 +1,1005 @@
+/* =========================================================
+   ANVITI — GREEN CHALLENGES
+   Premium Eco-Lifestyle Dashboard
+   Forest Green • Sage • Warm Cream
+   ========================================================= */
+
+.green-page {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 42px 30px 65px;
+  color: #243b2d;
+  font-family: inherit;
+}
+
+/* ================= HERO ================= */
+
+.green-header {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  padding: 46px 48px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 24px;
+  background: linear-gradient(120deg, #173d2c 0%, #24583d 55%, #39704d 100%);
+  color: #fff;
+  box-shadow: 0 14px 35px rgba(25,65,43,0.16);
+}
+
+.green-header::before,
+.green-header::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.green-header::before {
+  width: 330px;
+  height: 330px;
+  right: -85px;
+  top: -175px;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow:
+    0 0 0 28px rgba(255,255,255,0.035),
+    0 0 0 58px rgba(255,255,255,0.025);
+}
+
+.green-header::after {
+  width: 190px;
+  height: 190px;
+  right: 160px;
+  bottom: -145px;
+  background: rgba(255,255,255,0.055);
+}
+
+.green-header > div:first-child {
+  max-width: 680px;
+}
+
+.green-header h1 {
+  margin: 12px 0 10px;
+  color: #fff;
+  font-size: clamp(30px,4vw,42px);
+  line-height: 1.15;
+  font-weight: 750;
+  letter-spacing: -1.3px;
+}
+
+.green-header p {
+  max-width: 570px;
+  margin: 0;
+  color: #d5e6d9;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.green-header span {
+  color: #c3dfc9;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 2px;
+}
+
+.green-header > div:last-child {
+  flex-shrink: 0;
+}
+
+.green-header svg {
+  color: #d5e8bd;
+}
+
+/* ================= FOUR STAT CARDS ================= */
+
+.green-stats {
+  display: grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: 17px;
+  margin-bottom: 28px;
+}
+
+.green-stat-card {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 23px 22px;
+  background: #fff;
+  border: 1px solid #e8eee8;
+  border-radius: 18px;
+  box-shadow: 0 5px 18px rgba(35,65,43,0.045);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.green-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px rgba(35,65,43,0.09);
+}
+
+.green-stat-icon {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+  border-radius: 15px;
+  background: #eaf3e9;
+  color: #356849;
+}
+
+/* Green Points */
+.green-stat-card:nth-child(1) {
+  background: #f5faf3;
+  border-color: #e4eee0;
+}
+
+/* Current Streak */
+.green-stat-card:nth-child(2) {
+  background: #fff9f1;
+  border-color: #f3e5d4;
+}
+
+.green-stat-card:nth-child(2) .green-stat-icon {
+  background: #ffead5;
+  color: #c65d16;
+}
+
+/* Completed This Week */
+.green-stat-card:nth-child(3) {
+  background: #f4f8fc;
+  border-color: #e4edf5;
+}
+
+.green-stat-card:nth-child(3) .green-stat-icon {
+  background: #e5eff9;
+  color: #47769f;
+}
+
+/* Achievements */
+.green-stat-card:nth-child(4) {
+  background: #faf7fd;
+  border-color: #eee7f5;
+}
+
+.green-stat-card:nth-child(4) .green-stat-icon {
+  background: #eee6f8;
+  color: #8260a5;
+}
+
+.green-stat-card span {
+  color: #718075;
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: .3px;
+}
+
+.green-stat-card strong {
+  color: #244431;
+  font-size: 27px;
+  line-height: 1.2;
+  font-weight: 760;
+  letter-spacing: -.6px;
+}
+
+.green-stat-card small {
+  color: #89958c;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* Flame icon styling */
+.green-stat-card:nth-child(2) .green-stat-icon svg {
+  width: 28px;
+  height: 28px;
+  fill: #f59e0b;
+  stroke: #c65d16;
+  stroke-width: 1.8px;
+}
+
+/* ================= PROGRESS ================= */
+
+.green-progress-card {
+  padding: 28px 30px;
+  margin-bottom: 38px;
+  background: linear-gradient(135deg,#ffffff,#f8fbf6);
+  border: 1px solid #e7eee7;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(35,65,43,.045);
+}
+
+.green-progress-card h2,
+.green-progress-card h3 {
+  margin: 0 0 8px;
+  color: #294c36;
+  font-size: 19px;
+  font-weight: 730;
+}
+
+.green-progress-card p {
+  margin: 0;
+  color: #819087;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.green-progress-card strong {
+  color: #315f40;
+}
+
+.green-progress-card progress {
+  width: 100%;
+  height: 10px;
+  margin-top: 18px;
+  overflow: hidden;
+  border: none;
+  border-radius: 20px;
+  background: #eaf0e9;
+  accent-color: #4c8a5c;
+}
+
+.green-progress-card progress::-webkit-progress-bar {
+  background: #eaf0e9;
+  border-radius: 20px;
+}
+
+.green-progress-card progress::-webkit-progress-value {
+  background: linear-gradient(90deg,#4b8960,#83b77b);
+  border-radius: 20px;
+}
+
+.green-progress-card progress::-moz-progress-bar {
+  background: linear-gradient(90deg,#4b8960,#83b77b);
+  border-radius: 20px;
+}
+
+/* ================= SECTION HEADING ================= */
+
+.green-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.green-section-heading h2 {
+  margin: 0 0 6px;
+  color: #244431;
+  font-size: 25px;
+  font-weight: 760;
+  letter-spacing: -.6px;
+}
+
+.green-section-heading p {
+  margin: 0;
+  color: #829087;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ================= FILTERS ================= */
+
+.green-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 23px;
+}
+
+.green-filters button {
+  padding: 9px 17px;
+  border: 1px solid #e2eae2;
+  border-radius: 30px;
+  background: #fff;
+  color: #637568;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.green-filters button:hover {
+  border-color: #8daf91;
+  color: #315d3e;
+  background: #f4f8f2;
+}
+
+.green-filters button.active,
+.green-filters button[aria-pressed="true"] {
+  background: #28543a;
+  border-color: #28543a;
+  color: #fff;
+}
+
+/* ================= CHALLENGE GRID ================= */
+
+.challenge-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 20px;
+}
+
+.challenge-card {
+  position: relative;
+  min-width: 0;
+  padding: 26px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #e6ece5;
+  border-radius: 20px;
+  box-shadow: 0 5px 18px rgba(35,65,43,.045);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.challenge-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 13px 28px rgba(35,65,43,.09);
+}
+
+.challenge-card h3 {
+  margin: 13px 0 8px;
+  color: #294a35;
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 740;
+}
+
+.challenge-card p {
+  color: #7b897f;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.challenge-icon {
+  width: 49px;
+  height: 49px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background: #eaf3e9;
+  color: #39724b;
+}
+
+.challenge-category {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: #eff5ed;
+  color: #507457;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+}
+
+.challenge-details {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 17px 0;
+  color: #78877c;
+  font-size: 12px;
+}
+
+.challenge-details strong {
+  color: #3b7049;
+  font-weight: 750;
+}
+
+.challenge-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 10px 18px;
+  border: 1px solid #315e40;
+  border-radius: 11px;
+  background: #315e40;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.challenge-button:hover {
+  background: #21482f;
+  border-color: #21482f;
+  transform: translateY(-1px);
+}
+
+.challenge-button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ================= STATUS INDICATORS ================= */
+
+.challenge-pending,
+.challenge-approved,
+.challenge-rejected {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 11px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.challenge-pending {
+  background: #fff4df;
+  color: #a66b18;
+}
+
+.challenge-approved {
+  background: #e8f5e9;
+  color: #347346;
+}
+
+.challenge-rejected {
+  background: #fff0ed;
+  color: #b64c3e;
+}
+
+.challenge-card small {
+  color: #89958c;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* ================= IMPACT NOTE ================= */
+
+.impact-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 20px 22px;
+  margin-top: 30px;
+  border: 1px solid #e2ebdc;
+  border-radius: 16px;
+  background: #f2f7ee;
+  color: #55715a;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.impact-note svg {
+  flex-shrink: 0;
+  color: #56865c;
+}
+
+/* ================= PROOF MODAL ================= */
+
+.proof-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: rgba(17,36,25,.58);
+  backdrop-filter: blur(5px);
+}
+
+.proof-modal {
+  width: 100%;
+  max-width: 490px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 30px;
+  border: 1px solid #e6ece5;
+  border-radius: 21px;
+  background: #fff;
+  box-shadow: 0 24px 70px rgba(0,0,0,.2);
+}
+
+.proof-modal h2 {
+  margin: 0 0 8px;
+  color: #264832;
+  font-size: 23px;
+  font-weight: 750;
+}
+
+.proof-modal p {
+  color: #7b897f;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.proof-modal label {
+  display: block;
+  margin: 17px 0 7px;
+  color: #385642;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.proof-modal input,
+.proof-modal textarea {
+  width: 100%;
+  padding: 12px 13px;
+  border: 1px solid #dfe8df;
+  border-radius: 10px;
+  outline: none;
+  background: #fbfdfb;
+  color: #294333;
+  font: inherit;
+  font-size: 13px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.proof-modal input:focus,
+.proof-modal textarea:focus {
+  border-color: #6e9b73;
+  box-shadow: 0 0 0 3px rgba(110,155,115,.12);
+}
+
+.proof-modal textarea {
+  min-height: 105px;
+  resize: vertical;
+}
+
+.proof-modal input[type="file"] {
+  padding: 10px;
+  background: #f6f9f5;
+}
+
+.proof-modal button {
+  min-height: 42px;
+  padding: 10px 17px;
+  border: 1px solid #315e40;
+  border-radius: 10px;
+  background: #315e40;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+
+.proof-modal button:hover {
+  background: #21482f;
+}
+
+.proof-modal button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1000px) {
+  .green-stats {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+
+  .green-header {
+    padding: 38px;
+  }
+}
+
+@media (max-width: 760px) {
+  .green-page {
+    padding: 28px 19px 45px;
+  }
+
+  .green-header {
+    padding: 32px 27px;
+    border-radius: 19px;
+  }
+
+  .green-header h1 {
+    font-size: 31px;
+  }
+
+  .challenge-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .green-section-heading h2 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .green-page {
+    padding: 22px 14px 38px;
+  }
+
+  .green-header {
+    padding: 28px 22px;
+  }
+
+  .green-header h1 {
+    font-size: 27px;
+  }
+
+  .green-header p {
+    font-size: 13px;
+  }
+
+  .green-stats {
+    gap: 11px;
+  }
+
+  .green-stat-card {
+    padding: 17px 15px;
+  }
+
+  .green-stat-card strong {
+    font-size: 23px;
+  }
+
+  .green-stat-card span {
+    font-size: 11px;
+  }
+
+  .green-progress-card {
+    padding: 21px 18px;
+  }
+
+  .challenge-card {
+    padding: 20px;
+  }
+
+  .proof-modal {
+    padding: 23px 19px;
+  }
+}
+
+/* =========================================================
+   NEW VISUAL ADDITIONS — ILLUSTRATIONS & ANIMATIONS
+   Original CSS above is preserved.
+   ========================================================= */
+
+/* Animated hero plant */
+.green-header-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 125px;
+  height: 125px;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 50%;
+  background: rgba(255,255,255,.08);
+  animation: anvitiHeroFloat 4s ease-in-out infinite;
+}
+
+.green-header-icon::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border: 1px dashed rgba(220,245,220,.35);
+  border-radius: 50%;
+  animation: anvitiHeroOrbit 18s linear infinite;
+}
+
+.green-header-icon svg {
+  position: relative;
+  z-index: 1;
+  width: 76px;
+  height: 76px;
+  filter: drop-shadow(0 5px 9px rgba(0,0,0,.13));
+}
+
+/* Challenge card illustration panel */
+.challenge-illustration {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-height: 96px;
+  padding: 15px 17px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border: 1px solid #e5eee1;
+  border-radius: 16px;
+  background: linear-gradient(115deg, #f0f7ec 0%, #f8fbf4 60%, #edf5e9 100%);
+}
+
+.challenge-illustration::after {
+  content: "";
+  position: absolute;
+  width: 115px;
+  height: 115px;
+  right: -35px;
+  top: -48px;
+  border: 1px solid rgba(93,139,91,.12);
+  border-radius: 50%;
+  box-shadow: 0 0 0 13px rgba(93,139,91,.035);
+  pointer-events: none;
+}
+
+.challenge-illustration-emoji {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.82);
+  box-shadow: 0 5px 13px rgba(47,89,52,.08);
+  font-size: 34px;
+  animation: anvitiIllustrationFloat 3.5s ease-in-out infinite;
+}
+
+.challenge-illustration-text {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.challenge-illustration-text strong {
+  color: #315c3d;
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.challenge-illustration-text span {
+  color: #829184;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.challenge-illustration-sparkle {
+  position: absolute;
+  z-index: 1;
+  top: 13px;
+  right: 17px;
+  color: #91b77e;
+  font-size: 19px;
+  animation: anvitiSparkle 2.5s ease-in-out infinite;
+}
+
+/* Slight stagger so the illustrations do not move together */
+.challenge-card:nth-child(2n) .challenge-illustration-emoji {
+  animation-delay: .6s;
+}
+
+.challenge-card:nth-child(3n) .challenge-illustration-emoji {
+  animation-delay: 1.1s;
+}
+
+/* Plant growth panel */
+.green-plant-growth {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 22px;
+  margin-top: 24px;
+  border: 1px solid #e3eddf;
+  border-radius: 17px;
+  background: linear-gradient(110deg, #f0f7ec, #fbfdf8);
+}
+
+.green-plant-visual {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 105px;
+  height: 105px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, #e7f2e2 72%);
+}
+
+.green-plant-orbit {
+  position: absolute;
+  inset: 9px;
+  border: 1px dashed rgba(83,139,82,.35);
+  border-radius: 50%;
+  animation: anvitiPlantOrbit 16s linear infinite;
+}
+
+.green-plant-emoji {
+  position: relative;
+  z-index: 2;
+  display: block;
+  font-size: 53px;
+  line-height: 1;
+  filter: drop-shadow(0 5px 4px rgba(48,87,48,.12));
+  animation: anvitiPlantGrow 3s ease-in-out infinite;
+}
+
+.green-plant-ground {
+  position: absolute;
+  bottom: 15px;
+  width: 47px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(103,143,83,.2);
+}
+
+.green-plant-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.green-plant-label {
+  display: block;
+  margin-bottom: 6px;
+  color: #7b9b72;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.green-plant-info h3 {
+  margin: 0 0 5px;
+  color: #294c36;
+  font-size: 17px;
+}
+
+.green-plant-info p {
+  margin: 0 0 12px;
+  color: #819087;
+  font-size: 12px;
+}
+
+.green-plant-progress-track {
+  width: 100%;
+  height: 7px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #dfeadd;
+}
+
+.green-plant-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #5c9560, #a4c77e);
+  transition: width .8s ease;
+}
+
+.green-plant-info small {
+  display: block;
+  margin-top: 8px;
+  color: #789078;
+  font-size: 10px;
+}
+
+/* Animation keyframes */
+@keyframes anvitiHeroFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes anvitiHeroOrbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes anvitiIllustrationFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(2deg);
+  }
+}
+
+@keyframes anvitiSparkle {
+  0%, 100% {
+    opacity: .45;
+    transform: scale(.85) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(20deg);
+  }
+}
+
+@keyframes anvitiPlantOrbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes anvitiPlantGrow {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+/* Responsive adjustments for the new additions */
+@media (max-width: 600px) {
+  .green-header-icon {
+    width: 85px;
+    height: 85px;
+  }
+
+  .green-header-icon svg {
+    width: 55px;
+    height: 55px;
+  }
+
+  .challenge-illustration {
+    min-height: 85px;
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .challenge-illustration-emoji {
+    width: 53px;
+    height: 53px;
+    font-size: 29px;
+  }
+
+  .green-plant-growth {
+    gap: 14px;
+    padding: 15px;
+  }
+
+  .green-plant-visual {
+    width: 78px;
+    height: 78px;
+  }
+
+  .green-plant-emoji {
+    font-size: 40px;
+  }
+
+  .green-plant-ground {
+    bottom: 10px;
+    width: 37px;
+  }
+
+  .green-plant-info h3 {
+    font-size: 15px;
+  }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .green-header-icon,
+  .green-header-icon::before,
+  .challenge-illustration-emoji,
+  .challenge-illustration-sparkle,
+  .green-plant-orbit,
+  .green-plant-emoji {
+    animation: none !important;
+  }
+
+  .green-plant-progress-fill {
+    transition: none;
+  }
+}

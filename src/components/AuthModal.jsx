@@ -1,31 +1,13 @@
-
 /* ==============================================================================
    Anviti — Auth & Supabase Connection Modal
-   Supports user registration with full name, email and password.
    ============================================================================== */
 
 import { useState } from 'react';
-import {
-  X,
-  CheckCircle2,
-  AlertCircle,
-  Copy,
-  Check,
-  Database
-} from 'lucide-react';
-
+import { X, CheckCircle2, AlertCircle, Copy, Check, Database } from 'lucide-react';
 import { isSupabaseConfigured } from '../lib/supabase';
-import {
-  signInWithEmail,
-  signUpWithEmail
-} from '../lib/authService';
+import { signInWithEmail, signUpWithEmail } from '../lib/authService';
 
-export default function AuthModal({
-  isOpen,
-  onClose,
-  initialMode = 'signin',
-  user: _user
-}) {
+export default function AuthModal({ isOpen, onClose, initialMode = 'signin', user: _user }) {
   const [mode, setMode] = useState(initialMode);
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
@@ -39,15 +21,8 @@ export default function AuthModal({
 
   const isConfigured = isSupabaseConfigured();
 
-  const handleModeChange = (newMode) => {
-    setMode(newMode);
-    setErrorMsg('');
-    setSuccessMsg('');
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setErrorMsg('');
     setSuccessMsg('');
 
@@ -56,13 +31,8 @@ export default function AuthModal({
       return;
     }
 
-    if (!email.trim() || !password) {
+    if (!email || !password) {
       setErrorMsg('Please enter both email and password.');
-      return;
-    }
-
-    if (mode === 'signup' && password.length < 6) {
-      setErrorMsg('Password must contain at least 6 characters.');
       return;
     }
 
@@ -70,71 +40,38 @@ export default function AuthModal({
 
     try {
       if (mode === 'signup') {
-        await signUpWithEmail(
-          fullName.trim(),
-          email.trim(),
-          password
-        );
-
-        setSuccessMsg(
-          'Account created! Please check your email to confirm or sign in.'
-        );
-
+        await signUpWithEmail(fullName, email, password);
+        setSuccessMsg('Account created! Please check your email to confirm or sign in.');
         setFullName('');
-        setPassword('');
       } else {
-        await signInWithEmail(email.trim(), password);
-
+        await signInWithEmail(email, password);
         setSuccessMsg('Signed in successfully.');
-
         setTimeout(() => onClose(), 800);
       }
     } catch (err) {
-      setErrorMsg(
-        err.message || 'Authentication failed. Please check credentials.'
-      );
+      setErrorMsg(err.message || 'Authentication failed. Please check credentials.');
     } finally {
       setLoading(false);
     }
   };
 
   const copyEnvSnippet = () => {
-    const text =
-      `VITE_SUPABASE_URL=https://your-project.supabase.co\n` +
-      `VITE_SUPABASE_ANON_KEY=your-anon-key`;
-
+    const text = `VITE_SUPABASE_URL=https://your-project.supabase.co\nVITE_SUPABASE_ANON_KEY=your-anon-key`;
     navigator.clipboard.writeText(text);
     setCopied(true);
-
     setTimeout(() => setCopied(false), 2000);
   };
 
   return (
-    <div
-      className="modal-backdrop"
-      onClick={onClose}
-      role="dialog"
-      aria-modal="true"
-    >
-      <div
-        className="modal-card"
-        onClick={(e) => e.stopPropagation()}
-      >
+    <div className="modal-backdrop" onClick={onClose} role="dialog" aria-modal="true">
+      <div className="modal-card" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <div className="modal-title-group">
             <div className="modal-icon-badge">
               <Database size={18} />
             </div>
-
             <div>
-              <h3>
-                {isConfigured
-                  ? mode === 'signin'
-                    ? 'Sign In'
-                    : 'Create Account'
-                  : 'Supabase Integration'}
-              </h3>
-
+              <h3>{isConfigured ? (mode === 'signin' ? 'Sign In' : 'Create Account') : 'Supabase Integration'}</h3>
               <p className="modal-subtitle">
                 {isConfigured
                   ? 'Access your saved carbon footprint history across devices.'
@@ -142,13 +79,7 @@ export default function AuthModal({
               </p>
             </div>
           </div>
-
-          <button
-            type="button"
-            className="btn-close-modal"
-            onClick={onClose}
-            aria-label="Close dialog"
-          >
+          <button type="button" className="btn-close-modal" onClick={onClose} aria-label="Close dialog">
             <X size={18} />
           </button>
         </div>
@@ -159,18 +90,23 @@ export default function AuthModal({
               <div className="auth-tab-switch">
                 <button
                   type="button"
-                  className={`auth-tab-btn ${mode === 'signin' ? 'active' : ''
-                    }`}
-                  onClick={() => handleModeChange('signin')}
+                  className={`auth-tab-btn ${mode === 'signin' ? 'active' : ''}`}
+                  onClick={() => {
+                    setMode('signin');
+                    setErrorMsg('');
+                    setSuccessMsg('');
+                  }}
                 >
                   Sign In
                 </button>
-
                 <button
                   type="button"
-                  className={`auth-tab-btn ${mode === 'signup' ? 'active' : ''
-                    }`}
-                  onClick={() => handleModeChange('signup')}
+                  className={`auth-tab-btn ${mode === 'signup' ? 'active' : ''}`}
+                  onClick={() => {
+                    setMode('signup');
+                    setErrorMsg('');
+                    setSuccessMsg('');
+                  }}
                 >
                   Create Account
                 </button>
@@ -190,74 +126,47 @@ export default function AuthModal({
                 </div>
               )}
 
-              <form
-                onSubmit={handleSubmit}
-                className="auth-form"
-              >
+              <form onSubmit={handleSubmit} className="auth-form">
                 {mode === 'signup' && (
                   <div className="form-group">
-                    <label htmlFor="auth-fullname">
-                      Full Name
-                    </label>
-
+                    <label htmlFor="auth-full-name">Full Name</label>
                     <input
-                      id="auth-fullname"
+                      id="auth-full-name"
                       type="text"
                       placeholder="Enter your full name"
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
-                      autoComplete="name"
                       required
                     />
                   </div>
                 )}
 
                 <div className="form-group">
-                  <label htmlFor="auth-email">
-                    Email Address
-                  </label>
-
+                  <label htmlFor="auth-email">Email Address</label>
                   <input
                     id="auth-email"
                     type="email"
                     placeholder="you@domain.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    autoComplete="email"
                     required
                   />
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="auth-password">
-                    Password
-                  </label>
-
+                  <label htmlFor="auth-password">Password</label>
                   <input
                     id="auth-password"
                     type="password"
                     placeholder="••••••••"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    autoComplete={
-                      mode === 'signup'
-                        ? 'new-password'
-                        : 'current-password'
-                    }
                     required
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  className="btn-primary-block"
-                  disabled={loading}
-                >
-                  {loading
-                    ? 'Processing...'
-                    : mode === 'signin'
-                      ? 'Sign In'
-                      : 'Register Account'}
+                <button type="submit" className="btn-primary-block" disabled={loading}>
+                  {loading ? 'Processing...' : mode === 'signin' ? 'Sign In' : 'Register Account'}
                 </button>
               </form>
             </div>
@@ -265,16 +174,11 @@ export default function AuthModal({
             <div className="supabase-guide">
               <div className="guide-status-box">
                 <div className="status-indicator-bar amber"></div>
-
                 <div>
-                  <strong>
-                    Running in Local Storage & Demo Mode
-                  </strong>
-
+                  <strong>Running in Local Storage & Demo Mode</strong>
                   <p>
-                    All your calculated footprint records are currently
-                    saved locally in your browser. To enable multi-user
-                    authentication and cloud sync, provide your Supabase keys.
+                    All your calculated footprint records are currently saved locally in your browser.
+                    To enable multi-user authentication and cloud sync, provide your Supabase keys.
                   </p>
                 </div>
               </div>
@@ -282,51 +186,24 @@ export default function AuthModal({
               <div className="guide-steps">
                 <div className="guide-step">
                   <span className="step-num">1</span>
-
                   <div className="step-content">
                     <h4>Create a free Supabase project</h4>
-
-                    <p>
-                      Go to{' '}
-                      <a
-                        href="https://supabase.com"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-link"
-                      >
-                        supabase.com
-                      </a>{' '}
-                      and create a new project.
-                    </p>
+                    <p>Go to <a href="https://supabase.com" target="_blank" rel="noreferrer" className="inline-link">supabase.com</a> and create a new project.</p>
                   </div>
                 </div>
 
                 <div className="guide-step">
                   <span className="step-num">2</span>
-
                   <div className="step-content">
                     <div className="step-header-with-action">
-                      <h4>
-                        Add keys to your <code>.env</code> file
-                      </h4>
-
-                      <button
-                        type="button"
-                        className="btn-copy-code"
-                        onClick={copyEnvSnippet}
-                      >
-                        {copied
-                          ? <Check size={13} />
-                          : <Copy size={13} />}
-
-                        <span>
-                          {copied ? 'Copied' : 'Copy'}
-                        </span>
+                      <h4>Add keys to your <code>.env</code> file</h4>
+                      <button type="button" className="btn-copy-code" onClick={copyEnvSnippet}>
+                        {copied ? <Check size={13} /> : <Copy size={13} />}
+                        <span>{copied ? 'Copied' : 'Copy'}</span>
                       </button>
                     </div>
-
                     <pre className="code-snippet">
-                      VITE_SUPABASE_URL=https://your-project.supabase.co{'\\n'}
+                      VITE_SUPABASE_URL=https://your-project.supabase.co{'\n'}
                       VITE_SUPABASE_ANON_KEY=your-anon-key
                     </pre>
                   </div>
@@ -334,28 +211,18 @@ export default function AuthModal({
 
                 <div className="guide-step">
                   <span className="step-num">3</span>
-
                   <div className="step-content">
                     <h4>Run the SQL Schema</h4>
-
                     <p>
-                      Copy and run the SQL in{' '}
-                      <code className="code-pill">
-                        supabase/schema.sql
-                      </code>{' '}
-                      inside the Supabase SQL Editor to create tables
-                      with Row Level Security (RLS).
+                      Copy and run the SQL in <code className="code-pill">supabase/schema.sql</code> inside the
+                      Supabase SQL Editor to create tables with Row Level Security (RLS).
                     </p>
                   </div>
                 </div>
               </div>
 
               <div className="modal-footer-actions">
-                <button
-                  type="button"
-                  className="btn-secondary-full"
-                  onClick={onClose}
-                >
+                <button type="button" className="btn-secondary-full" onClick={onClose}>
                   Continue in Local / Demo Mode
                 </button>
               </div>
